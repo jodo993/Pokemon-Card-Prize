@@ -1,44 +1,63 @@
 # Pokemon Shop Reward Program
 
 import random
+import time
 
 # Chance to win
-def chanceToWin(oddsOfWinning):
-
-    userNumber = random.randint(1, oddsOfWinning)
-    winningNumber = random.randint(1, oddsOfWinning)
-
-    if userNumber == winningNumber:
-        print("you win")
-    else:
-        print("You lose")
-
-# Chance to win Mew EX SIR
-def oddsOfPrizes():
-
+def chanceToWin():
+    
+    # Odds of winning each prizes
     prize = {
-        2000: "Mew EX SIR",
-        #"Mew Metal Card": 1500,
-        1000: "Mewtwo IR"
-        #"Full Art": 500,
-        #"Full Art V": 250,
-        #"Half ex": 50,
-        #"Holo": 10,
-        #"Reverse Holo": 5
+        "Mew EX SIR": 2000,
+        "Mew Metal Card": 1500,
+        "Mewtwo IR": 1000,
+        "Full Art": 500,
+        "Full Art V": 250,
+        "Half ex": 50,
+        "Holo": 10,
+        "Reverse Holo": 5
         }
 
-    n = 01
+    # Checking to see if prize is won
     for key in prize:
-        print(userNumber = random.randint(1, prize))
-        print(winningNumber = random.randint(1, prize))
-                             
-                             
-    
+        userNumber = random.randint(1, prize[key])          # Selecting user's number
+        winningNumber = random.randint(1, prize[key])      # Selecting winning number
 
+        # Has the user won?
+        win = False
+
+        # Let user know what they won
+        if userNumber == winningNumber:
+            gameResultAnnoucement()
+            print("********************")
+            print("**                             **")
+            print("**       YOU WIN A       **")
+            print("**                             **")
+            print("********************")
+            time.sleep(1.5)
+            print("        ", key.upper() ,"        ")
+            win = True
+            break
+            
+    # Let user know they did not win
+    if(win == False):
+            gameResultAnnoucement()
+            print("Sorry, you did not win this time.")        
+
+def gameResultAnnoucement():
+
+    # Anticipation text before result is shown
+    print("--------------------------")
+    time.sleep(0.5)
+    print("            RESULT IS           ")
+    time.sleep(0.5)
+    print("--------------------------")
+    time.sleep(0.5)
+            
 # Start of program
 def main():
 
-    oddsOfPrizes()
+    chanceToWin()
 
     
 # Start of the program
